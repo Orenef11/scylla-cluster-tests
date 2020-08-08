@@ -26,8 +26,8 @@ def create_table(endpoint_url, test_params, table_name=None):
     try:
         aws_params = dict(endpoint_url=endpoint_url,
                           aws_access_key_id=test_params.get('alternator_access_key_id'),
-                          aws_secret_access_key=test_params.get('alternator_secret_access_key')
-                          )
+                          aws_secret_access_key=test_params.get('alternator_secret_access_key'),
+                          region_name=test_params.params.get("region_name").split()[0])
         dynamodb_resource: DynamoDBServiceResource = boto3.resource('dynamodb', **aws_params)
         dynamodb_client: DynamoDBClient = boto3.client('dynamodb', **aws_params)
 
